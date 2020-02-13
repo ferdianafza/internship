@@ -136,7 +136,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :reports
   resources :majors
-  devise_for :students, controllers: { sessions: 'students/sessions' }
+  devise_for :students, controllers: { sessions: 'students/sessions', registrations: 'students/registrations' }
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
     get '/students/sign_out' => 'devise/sessions#destroy'

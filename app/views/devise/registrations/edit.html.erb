@@ -9,6 +9,7 @@
 
   <div class="field">
     <%= f.label :avatar %><br />
+    <%= f.hidden_field :avatar, value: f.object.avatar.signed_id if @student.avatar.attached? %>
     <%= f.file_field :avatar %>
   </div>
 

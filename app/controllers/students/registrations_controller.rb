@@ -40,6 +40,10 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+    def after_update_path_for(resource)
+      edit_student_registration_path
+    end
+
    def update_resource(resource, params)
     if params[:current_password].blank?
      resource.update_without_password(params.except(:current_password))
@@ -58,9 +62,9 @@ class Students::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-   def configure_account_update_params
+  def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
-    end
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
