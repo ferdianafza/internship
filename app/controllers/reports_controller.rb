@@ -1,14 +1,14 @@
 class ReportsController < ApplicationController
     before_action :authenticate_student!, except: [:show]
-
     before_action :set_report, only: [:show, :edit, :update]
+    before_action :set_student, only: [:index, :new, :show]
+
 
   def index
     @reports = current_student.reports
   end
 
   def new
-    student_signed_in?
     @report = current_student.reports.new
   end
 
@@ -28,6 +28,10 @@ class ReportsController < ApplicationController
 
 
   private
+
+    def set_student
+      @student = current_student
+    end
 
     def set_report
       @report = Report.find(params[:id])

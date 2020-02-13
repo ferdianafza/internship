@@ -1,6 +1,7 @@
 class PresencesController < ApplicationController
     before_action :authenticate_student!, except: [:show]
-    before_action :set_presence, only: [:show, :edit, :update]
+    before_action :set_checkout, only: [:show, :checkout, :update]
+    before_action :set_student, only: [:index, :new, :show]
 
     def index
       @presences = current_student.presences
@@ -12,6 +13,9 @@ class PresencesController < ApplicationController
     end
 
     def edit
+    end
+
+    def checkout
     end
 
     def update
@@ -43,12 +47,20 @@ class PresencesController < ApplicationController
 
   private
 
+    def set_student
+      @student = current_student
+    end
+
     def set_presence
       @presence = Presence.find(params[:id])
     end
 
     def presence_params
       params.require(:presence).permit(:checkin, :checkout)
+    end
+
+    def set_checkout
+       @presence = current_student.presences.last
     end
 
     def presence_checkout
