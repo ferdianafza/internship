@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Presences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Checkin</th>
+      <th>Checkout</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @presences.each do |presence| %>
+      <tr>
+        <td><%= presence.checkin %></td>
+        <td><%= presence.checkout %></td>
+        <td><%= link_to 'Lets Checkout', edit_presence_path(presence) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Presence', new_presence_path %>

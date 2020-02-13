@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Checkin:</strong>
+  <%= @presence.checkin %>
+</p>
+
+<p>
+  <strong>Checkout:</strong>
+  <%= @presence.checkout %>
+</p>
+
+<%= link_to 'Edit', edit_presence_path(@presence) %> |
+<%= link_to 'Back', presences_path %>
