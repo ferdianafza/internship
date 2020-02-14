@@ -31,23 +31,21 @@ class PresencesController < ApplicationController
     end
 
     def create
-    @presence = current_student.presences.new(presence_params)
-    @last = @presence
-     # @before_create = current_student.presences.last
-     # @before_checkin = @before_create.checkin.to_date
-    respond_to do |format|
-         if @last.checkin.to_date != Date.today
-            if @presence.save
-              format.html { redirect_to @presence, notice: 'Checkin was successfully created.' }
-              format.json { render :show, status: :created, location: @presence }
-            else
-              format.html { render :new }
-              format.json { render json: @presence.errors, status: :unprocessable_entity }
-            end
-         elsif @last.checkin.to_date == Date.today
-            format.html { redirect_to @presence, notice: 'Anda Sudah Checkin Hari ini.' }
+    @student_last_presences = current_student.presences.last.checkin.to_date
+    if @student_last_presences != Date.today
+        @presence = current_student.presences.new(presence_params)
+        respond_to do |format|
+          if @presence.save
+            format.html { redirect_to @presence, notice: 'Checkin was successfully created.' }
+            format.json { render :show, status: :created, location: @presence }
+          else
+            format.html { render :new }
+            format.json { render json: @presence.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        format.html { redirect_to @presence, notice: 'Anda sudah Checkin Hari ini.' }
       end
-    end
   end
 
 
