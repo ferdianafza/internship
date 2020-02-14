@@ -1,3 +1,55 @@
+<style>
+  .avtar {
+    float: left;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+  }
+
+  .sub {
+    margin-left: 400px;
+  }
+</style>
+<div class="profile">
+<legend>
+<% if @student.avatar.attached? %>
+    <%= image_tag url_for(@student.avatar.variant(resize:"200x200")), class: "avtar"%>
+<% end %>
+<div>
+<br>
+<br>
+<h2><%= @student.firstname %>  <%= @student.lastname %></h2>
+<br>
+<br>
+<br>
+<div style="float: left;">
+<div class="form-group">
+    <label for="exampleFormControlInput1">Nis</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<%= @student.nis %> ">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<%= @student.email %> ">
+    <label for="exampleFormControlInput1">Major</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<%= @student.major.name %> ">
+    <label for="exampleFormControlInput1">School</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<%= @student.school %> ">
+    <label for="exampleFormControlInput1">Phone</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<%= @student.phone %> ">
+  </div>
+</div>
+<div class="form-group">
+   <label for="exampleFormControlInput1 list-data">Address</label>
+    &nbsp;&nbsp; &nbsp; &nbsp;<input type="email" class="form-control sub" id="exampleFormControlInput1 list-data" placeholder="<%= @student.address %> " style = "width:400px; margin-left:400px;">
+    <label for="exampleFormControlInput1 list-data">City</label>
+    <input type="email" class="form-control sub" id="exampleFormControlInput1 list-data" placeholder="<%= @student.city %> " style = "width:400px; margin-left:400px;">
+    <label for="exampleFormControlInput1 list-data">Province</label>
+    <input type="email" class="form-control sub" id="exampleFormControlInput1 list-data" placeholder="<%= @student.province %> " style = "width:400px; margin-left:400px;"> <label for="exampleFormControlInput1 list-data">Zipcode</label>
+    <input type="email" class="form-control sub" id="exampleFormControlInput1 list-data" placeholder="<%= @student.zipcode %> " style = "width:400px; margin-left:400px;"> <label for="exampleFormControlInput1 list-data">Province</label>
+    <input type="email" class="form-control sub" id="exampleFormControlInput1 list-data" placeholder="<%= @student.province %> " style = "width:400px; margin-left:400px;">
+    </div>
+</div>
+</legend>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-7">
