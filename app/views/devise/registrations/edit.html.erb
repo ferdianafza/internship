@@ -24,7 +24,7 @@
 <center>
 <div class="profile">
   <% if @student.avatar.attached? %>
-      <%= image_tag url_for(@student.avatar.variant(resize:"200x200")), class: "photoprofile"%>
+      <%= image_tag url_for(@student.avatar), class: "photoprofile"%>
   <% end %>
 <div>
 

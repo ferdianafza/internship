@@ -230,20 +230,20 @@ ActiveAdmin.setup do |config|
   #
   # To change the default utility navigation to show a link to your website & a logout btn
   #
-    config.namespace :admin do |admin|
-      admin.build_menu :utility_navigation do |menu|
-        menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-        admin.add_logout_button_to_menu menu
-      end
-    end
+    # config.namespace :admin do |admin|
+    #   admin.build_menu :utility_navigation do |menu|
+    #     menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+    #     admin.add_logout_button_to_menu menu
+    #   end
+    # end
   
   # If you wanted to add a static menu item to the default menu provided:
   #
-    config.namespace :admin do |admin|
-      admin.build_menu :default do |menu|
-        menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-      end
-    end
+    # config.namespace :admin do |admin|
+    #   admin.build_menu :default do |menu|
+    #     menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+    #   end
+    # end
 
   # == Download Links
   #
@@ -283,7 +283,7 @@ ActiveAdmin.setup do |config|
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
-  # config.filters = true
+  # config.filters = false
   #
   # By default the filters include associations in a select, which means
   # that every record will be loaded for each association (up
@@ -317,7 +317,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  config.footer = 'my custom footer text'
+  # config.footer = 'my custom footer text'
 
   # == Sorting
   #

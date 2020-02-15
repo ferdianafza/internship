@@ -1,4 +1,5 @@
 class PresencesController < ApplicationController
+    before_action :authenticate_student!, only: [:new]
     before_action :authenticate_student!, except: [:show]
     before_action :set_checkout, only: [:show, :checkout, :update]
     before_action :set_student, only: [:index, :new, :show]
@@ -8,7 +9,6 @@ class PresencesController < ApplicationController
     end
 
     def new
-      student_signed_in?
       @presence = current_student.presences.new
     end
 
@@ -31,27 +31,26 @@ class PresencesController < ApplicationController
     end
 
     def create
-    @student_last_presences_checkin = current_student.presences.last.checkin.to_date
-    if @student_last_presences_checkin != Date.today
-        @presence = current_student.presences.new(presence_params)
-        respond_to do |format|
-          if @presence.save
-            format.html { redirect_to @presence, notice: 'Checkin was successfully created.' }
-            format.json { render :show, status: :created, location: @presence }
-          else
-            format.html { render :new }
-            format.json { render json: @presence.errors, status: :unprocessable_entity }
+      student_last_presences_checkin = current_student.presences.last.checkin.to_date
+      if student_last_presences_checkin != Date.today
+          @presence = current_student.presences.new(presence_params)
+          respond_to do |format|
+            if @presence.save
+              format.html { redirect_to @presence, notice: 'Checkin was successfully created.' }
+              format.json { render :show, status: :created, location: @presence }
+            else
+              format.html { render :new }
+              format.json { render json: @presence.errors, status: :unprocessable_entity }
+            end
           end
+        else
+          respond_to do |format|
+          format.html { redirect_to "/presences", notice: 'Anda sudah Checkin Hari ini.' }
         end
-      else
-        respond_to do |format|
-        format.html { redirect_to "/presences", notice: 'Anda sudah Checkin Hari ini.' }
       end
-      end
-  end
+    end
 
-
-  private
+    private
 
     def set_student
       @student = current_student

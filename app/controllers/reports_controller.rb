@@ -3,7 +3,6 @@ class ReportsController < ApplicationController
     before_action :set_report, only: [:show, :edit, :update]
     before_action :set_student, only: [:index, :new, :show]
 
-
   def index
     @reports = current_student.reports
   end
@@ -25,7 +24,6 @@ class ReportsController < ApplicationController
       end
     end
   end
-
 
   private
 
