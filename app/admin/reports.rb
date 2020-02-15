@@ -5,7 +5,7 @@ ActiveAdmin.register Report do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :subject, :content, :student_id
+  permit_params :subject, :content, :student_id
   #
   # or
   #
@@ -14,5 +14,31 @@ ActiveAdmin.register Report do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  filter :student
+  filter :created_at
+
+  index do
+    selectable_column
+    id_column
+    column :subject
+    # column (:content) { |report| raw(report.content) }
+    # column "content" do |content|
+    #   truncate(content.content, omision: "", length: 10)
+    # end
+    column :student
+    column :created_at
+    actions
+  end
+
+
+  show do
+   attributes_table do
+      row :subject
+      row (:content) { |report| raw(report.content) }
+      row :student
+      row :created_at
+    end
+  end
   
 end

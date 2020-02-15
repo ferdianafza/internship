@@ -5,7 +5,7 @@ ActiveAdmin.register Presence do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :checkin, :checkout, :student_id
+  permit_params :checkin, :checkout, :student_id
   #
   # or
   #
@@ -14,5 +14,18 @@ ActiveAdmin.register Presence do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  filter :student
+  filter :checkin
+  filter :checkout
+
+  index do
+    selectable_column
+    id_column
+    column :checkin
+    column :checkout
+    column :student
+    actions
+  end
   
 end

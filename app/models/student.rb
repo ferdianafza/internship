@@ -35,9 +35,16 @@ class Student < ApplicationRecord
   has_one_attached :avatar
 
   belongs_to :major
-  validates :email, :password, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
+  def password_required?
+	 false
+  end
+
+  def full_name
+  	"#{firstname} #{lastname}"
+  end
+
 end

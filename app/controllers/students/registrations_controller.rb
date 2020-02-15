@@ -52,6 +52,14 @@ class Students::RegistrationsController < Devise::RegistrationsController
       end
     end
 
+    # def update_resource(resource, params)
+    #   # Require current password if user is trying to change password.
+    #   return super if params["password"]&.present?
+
+    #   # Allows user to update registration information without password.
+    #   resource.update_without_password(params.except("current_password"))
+    # end
+
   # def update_resource(resource, params)
   #   resource.update_without_password(params)
   # end
@@ -63,7 +71,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attributes])
   # end
 
   def configure_account_update_params

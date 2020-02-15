@@ -5,7 +5,7 @@ ActiveAdmin.register Major do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name
+  permit_params :name
   #
   # or
   #
@@ -15,6 +15,13 @@ ActiveAdmin.register Major do
   #   permitted
   # end
 
-  filter :name
+ filter :name, filters: [:contains]
+
+    form do |f|
+    f.inputs :multipart => true do
+      f.input :name
+    end
+    f.actions
+  end
   
 end
