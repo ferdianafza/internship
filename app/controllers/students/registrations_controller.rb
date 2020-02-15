@@ -44,13 +44,17 @@ class Students::RegistrationsController < Devise::RegistrationsController
       edit_student_registration_path
     end
 
-   def update_resource(resource, params)
-    if params[:current_password].blank?
-     resource.update_without_password(params.except(:current_password))
-    else
-      resource.update_with_password(params)
+     def update_resource(resource, params)
+      if params[:current_password].blank?
+       resource.update_without_password(params.except(:current_password))
+      else
+        resource.update_with_password(params)
+      end
     end
-  end
+
+  # def update_resource(resource, params)
+  #   resource.update_without_password(params)
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

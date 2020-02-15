@@ -21,7 +21,7 @@ class PresencesController < ApplicationController
     def update
       respond_to do |format|
         if @presence.update(presence_checkout)
-          format.html { redirect_to @presence, notice: 'presence was successfully updated.' }
+          format.html { redirect_to @presence, notice: 'Checkout was successfully updated.' }
           format.json { render :show, status: :ok, location: @presence }
         else
           format.html { render :edit }
@@ -31,8 +31,8 @@ class PresencesController < ApplicationController
     end
 
     def create
-    @student_last_presences = current_student.presences.last.checkin.to_date
-    if @student_last_presences != Date.today
+    @student_last_presences_checkin = current_student.presences.last.checkin.to_date
+    if @student_last_presences_checkin != Date.today
         @presence = current_student.presences.new(presence_params)
         respond_to do |format|
           if @presence.save
@@ -44,7 +44,9 @@ class PresencesController < ApplicationController
           end
         end
       else
-        format.html { redirect_to @presence, notice: 'Anda sudah Checkin Hari ini.' }
+        respond_to do |format|
+        format.html { redirect_to "/presences", notice: 'Anda sudah Checkin Hari ini.' }
+      end
       end
   end
 
