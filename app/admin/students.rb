@@ -4,8 +4,8 @@ ActiveAdmin.register Student do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :encrypted_password, :firstname, :lastname, :school, :phone, :nis, 
-    :address, :city, :province, :zipcode, :periode, :status, :major_id, :reset_password_token, 
+  permit_params :email, :encrypted_password, :firstname, :lastname, :school, :phone, :nis,
+    :address, :city, :province, :zipcode, :periode, :status, :major_id, :reset_password_token,
     :reset_password_sent_at, :remember_created_at, :mothers_name, :fathers_name, :emergency_number,
     :avatar, :password, :password_confirmation, :start_at, :end_at
   #
@@ -60,8 +60,23 @@ end
       end
 
       row :email
+      row :nis
       row :firstname
       row :lastname
+      row :status
+      row :school
+      row :major
+      row :mothers_name
+      row :fathers_name
+      row :phone
+      row :zipcode
+      row :address
+      row :city
+      row :province
+      row :emergency_number
+      row :start_at
+      row :end_at
+
     end
 
   #  columns do
