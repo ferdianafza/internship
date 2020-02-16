@@ -143,6 +143,7 @@ Rails.application.routes.draw do
     get '/students/sign_out' => 'devise/sessions#destroy'
   end
   get 'homes/myprofile' => 'homes/myprofile'
+  post 'homes/update' => 'homes/update'
 
   resources :homes
   root to: 'homes#index'

@@ -4,7 +4,7 @@
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
       <% if @student_last_presences_checkin != Date.today %>
         <%= render partial: 'checkin', presence: @presence %>
-      <% elsif @student_last_presences_checkout != Date.today%>
+      <% elsif @student_last_presences_checkout == nil%>
         <%= render partial: 'checkout' %>
       <% else %>
 

@@ -2,6 +2,7 @@
 
 <p>
   <strong>Checkin:</strong>
+  <%= @presence.checkin %>
 </p>
 
 <p>
@@ -10,6 +11,3 @@
 </p>
 
 <%= render 'checkout', presence: @presence %>
-
-<%= link_to 'Edit', edit_presence_path(@presence) %> |
-<%= link_to 'Back', presences_path %>

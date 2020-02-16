@@ -14,7 +14,6 @@
     <% @presences.each do |presence| %>
       <tr>
         <td><%= presence.checkin.strftime("%A, %e %B %Y - %H:%M") %></td>
-        <td><%= presence.checkout.strftime("%A, %e %B %Y - %H:%M") %></td>
       </tr>
     <% end %>
   </tbody>

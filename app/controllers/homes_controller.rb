@@ -1,10 +1,10 @@
 class HomesController < ApplicationController
-  require 'active_support/core_ext'
     before_action :authenticate_student!
+    before_action :set_checkout, only: [:index, :checkout, :update]
 
     def index
-       @student_last_presences_checkin = current_student.presences.last.checkin.to_date
-      # @student_last_presences_checkout = current_student.presences.last.checkout.to_date
+      @student_last_presences_checkin = current_student.presences.last.checkin.to_date
+      @student_last_presences_checkout = current_student.presences.last.checkout
       @presence = current_student.presences.new
       @presence_to_update = current_student.presences.last
     end
@@ -19,7 +19,7 @@ class HomesController < ApplicationController
     def update
       respond_to do |format|
         if @presence_to_update.update(presence_checkout)
-          format.html { redirect_to @presence, notice: 'Checkout was successfully updated.' }
+          format.html { redirect_to "/", notice: 'Checkout was successfully updated.' }
           format.json { render :show, status: :ok, location: @presence }
         else
           format.html { render :edit }

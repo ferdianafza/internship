@@ -38,7 +38,7 @@ class PresencesController < ApplicationController
 
           respond_to do |format|
             if @presence.save
-              format.html { redirect_to @presence, notice: 'Checkin was successfully created.' }
+              format.html { redirect_to "/", notice: 'Checkin was successfully created.' }
               format.json { render :show, status: :created, location: @presence }
             else
               format.html { render :new }
