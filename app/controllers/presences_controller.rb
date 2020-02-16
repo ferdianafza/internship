@@ -35,6 +35,7 @@ class PresencesController < ApplicationController
       # if student_last_presences_checkin != Date.today ||
       if current_student.presences == [] || student_last_presences_checkin != Date.today
           @presence = current_student.presences.new(presence_params)
+
           respond_to do |format|
             if @presence.save
               format.html { redirect_to @presence, notice: 'Checkin was successfully created.' }
