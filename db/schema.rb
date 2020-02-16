@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_080021) do
+ActiveRecord::Schema.define(version: 2020_02_16_035141) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(version: 2020_02_15_080021) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "subject"
     t.string "content"
@@ -101,7 +107,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_080021) do
     t.string "nis"
     t.string "address"
     t.string "city"
-    t.string "province"
+    t.integer "province_id"
     t.string "zipcode"
     t.boolean "status"
     t.integer "major_id"

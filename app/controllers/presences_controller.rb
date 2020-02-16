@@ -32,7 +32,8 @@ class PresencesController < ApplicationController
 
     def create
       student_last_presences_checkin = current_student.presences.last.checkin.to_date
-      if student_last_presences_checkin != Date.today
+      # if student_last_presences_checkin != Date.today ||
+      if current_student.presences == [] || student_last_presences_checkin != Date.today
           @presence = current_student.presences.new(presence_params)
           respond_to do |format|
             if @presence.save

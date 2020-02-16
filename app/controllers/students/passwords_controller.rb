@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class Students::PasswordsController < Devise::PasswordsController
-  layout 'false'
+  # layout 'login'
+
+  # def new
+  #    render layout: 'login'
+  # end
   # GET /resource/password/new
   # def new
   #   super
@@ -32,7 +36,4 @@ class Students::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
-  def action
-    render layout: false
-  end
 end

@@ -101,6 +101,7 @@
 #                                       POST       /students(.:format)                                                                      students/registrations#create
 #                               sign_in GET        /sign_in(.:format)                                                                       devise/sessions#new
 #                     students_sign_out GET        /students/sign_out(.:format)                                                             devise/sessions#destroy
+#                       homes_myprofile GET        /homes/myprofile(.:format)                                                               homes#myprofile
 #                                 homes GET        /homes(.:format)                                                                         homes#index
 #                                       POST       /homes(.:format)                                                                         homes#create
 #                              new_home GET        /homes/new(.:format)                                                                     homes#new
